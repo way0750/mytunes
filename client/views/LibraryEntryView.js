@@ -10,7 +10,9 @@ var LibraryEntryView = Backbone.View.extend({
       //the this would be the libraryentryview itself
       //and this.model is the song model;
       var songModel = this.model;
-      songModel.play();
+      // click it:
+      // always enqeue that songModel
+      // then play the first in that queue
       songModel.enqueue();
     }
   },

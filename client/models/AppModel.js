@@ -12,7 +12,6 @@ var AppModel = Backbone.Model.extend({
     end up referring to the window. That's just what happens with all JS events. The handlers end up
     getting called from the window (unless we override it, as we do here). */
 
-
     params.library.on('play', function(song) {
       this.set('currentSong', song);
     }, this);
@@ -23,7 +22,9 @@ var AppModel = Backbone.Model.extend({
 
     params.library.on('ended', function (songModel) {
       this.get('songQueue').dequeue(songModel);
-      this.set('currentSong', this.get('songQueue').at(0));
+      //once curretSong is reset it will cause playerView to re-render and play that song.
+      this.set('currentSong', this.get('songQueue').playFirst());
+
     }, this)
 
   }
