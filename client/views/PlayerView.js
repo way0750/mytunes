@@ -8,8 +8,18 @@ var PlayerView = Backbone.View.extend({
   initialize: function() {
   },
 
-  setSong: function(song) {
-    this.model = song;
+  events : {
+    'ended' : 'ended'
+  },
+
+  ended : function () {
+    var songModel = this.model;
+    songModel.ended();
+  },
+
+  setSong: function(songModel) {
+    this.model = songModel;
+    // once you render it and add it to the dom, it starts to play
     this.render();
   },
 
